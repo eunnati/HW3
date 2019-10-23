@@ -53,7 +53,14 @@ class MoviesController < ApplicationController
     flash[:notice] = "#{@movie.title} was successfully updated."
     redirect_to movie_path(@movie)
   end
-
+  
+def destroy
+    @movie = Movie.find(params[:id])
+    @movie.destroy
+    flash[:notice] = "Movie '#{@movie.title}' deleted."
+    redirect_to movies_path
+  end
+  
   def search
     @similar_movies = Movie.similar_movies(params[:title])
     if @similar_movies.nil?
@@ -62,11 +69,6 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by(title: params[:title])
   end
 
-  def destroy
-    @movie = Movie.find(params[:id])
-    @movie.destroy
-    flash[:notice] = "Movie '#{@movie.title}' deleted."
-    redirect_to movies_path
-  end
+  
 
 end

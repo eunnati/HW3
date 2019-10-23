@@ -6,6 +6,8 @@ describe Movie do
     let!(:movie2) { FactoryGirl.create(:movie, title: 'Seven', director: 'David Fincher') }
     let!(:movie3) { FactoryGirl.create(:movie, title: "Schindler's List", director: 'Steven Spielberg') }
     let!(:movie4) { FactoryGirl.create(:movie, title: "Stop") }
+    
+ 
 
     context 'director exists' do
       it 'finds similar movies correctly' do
